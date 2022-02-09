@@ -20,6 +20,10 @@ In case you prefer Java to C++, Giuseppe Barbieri [created a Java port here](htt
 - `premake4 gmake`
 - `make config=release`
 
+N.B. if using Windows,
+- first install MinGW (includes mingw-make)
+- use `mingw32-make config=release CC=gcc` instead of `make config=release`
+
 ## Rebuilding the HTML Documentation
 
 - `apt-get install lua-filesystem xsltproc docbook-xsl`
