@@ -6,5 +6,7 @@ out vec4 outputColor;
 
 void main()
 {
-	outputColor = theColor;
+	float lerpValue = (gl_FragCoord.y - 125.0f) / 250.0f;
+
+	outputColor = mix(theColor, vec4(0.0f, 0.0f, 0.0f, 1.0f), lerpValue);
 }

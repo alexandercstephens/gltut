@@ -78,7 +78,7 @@ void display()
 //This is an opportunity to call glViewport or glScissor to keep up with the change in size.
 void reshape (int w, int h)
 {
-	glViewport(0, 0, (GLsizei) w, (GLsizei) h);
+	glViewport(0, h/2, (GLsizei) w, (GLsizei) (h/2));
 }
 
 //Called whenever a key on the keyboard was pressed.
