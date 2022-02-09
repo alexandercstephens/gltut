@@ -1,0 +1,8 @@
+**/Makefile
+**/*Main.exe
+**/*Main.make
+**/obj
+**/lib
+**/Release
+**/*.cbp
+**/*.workspace
