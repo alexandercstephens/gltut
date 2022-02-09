@@ -1,6 +1,6 @@
 **/Makefile
-**/*Main.exe
-**/*Main.make
+**/Tut*.exe
+**/Tut*.make
 **/obj
 **/lib
 **/Release
