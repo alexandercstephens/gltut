@@ -62,17 +62,22 @@ void init()
 //If you need continuous updates of the screen, call glutPostRedisplay() at the end of the function.
 void display()
 {
+	float timeInSeconds = glutGet(GLUT_ELAPSED_TIME) / 1000.0f;
+
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	glUseProgram(theProgram);
 
-	glUniform1f(elapsedTimeUniform, glutGet(GLUT_ELAPSED_TIME) / 1000.0f);
+	glUniform1f(elapsedTimeUniform, timeInSeconds);
 
 	glBindBuffer(GL_ARRAY_BUFFER, positionBufferObject);
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0);
 
+	glDrawArrays(GL_TRIANGLES, 0, 3);
+
+	glUniform1f(elapsedTimeUniform, timeInSeconds + 2.5f);
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 
 	glDisableVertexAttribArray(0);

@@ -10,6 +10,7 @@
 #define ARRAY_COUNT( array ) (sizeof( array ) / (sizeof( array[0] ) * (sizeof( array ) != sizeof(void*) || sizeof( array[0] ) <= sizeof(void*))))
 
 GLuint theProgram;
+GLint windowHeightLocation;
 
 void InitializeProgram()
 {
@@ -19,6 +20,8 @@ void InitializeProgram()
 	shaderList.push_back(Framework::LoadShader(GL_FRAGMENT_SHADER, "VertexColors.frag"));
 
 	theProgram = Framework::CreateProgram(shaderList);
+
+	windowHeightLocation = glGetUniformLocation(theProgram, "windowHeight");
 }
 
 const float vertexData[] = {
@@ -84,6 +87,10 @@ void display()
 void reshape (int w, int h)
 {
 	glViewport(0, 0, (GLsizei) w, (GLsizei) h);
+
+	glUseProgram(theProgram);
+	glUniform1f(windowHeightLocation, h);
+	glUseProgram(0);
 }
 
 //Called whenever a key on the keyboard was pressed.

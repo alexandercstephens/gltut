@@ -12,6 +12,7 @@
 
 GLuint theProgram;
 GLuint elapsedTimeUniform;
+GLint windowHeightLocation;
 
 void InitializeProgram()
 {
@@ -21,6 +22,8 @@ void InitializeProgram()
 	shaderList.push_back(Framework::LoadShader(GL_FRAGMENT_SHADER, "FragPosition.frag"));
 
 	theProgram = Framework::CreateProgram(shaderList);
+
+	windowHeightLocation = glGetUniformLocation(theProgram, "windowHeight");
 }
 
 const float vertexData[] = {
@@ -79,6 +82,10 @@ void display()
 void reshape (int w, int h)
 {
 	glViewport(0, h/2, (GLsizei) w, (GLsizei) (h/2));
+
+	glUseProgram(theProgram);
+	glUniform1f(windowHeightLocation, h);
+	glUseProgram(0);
 }
 
 //Called whenever a key on the keyboard was pressed.
