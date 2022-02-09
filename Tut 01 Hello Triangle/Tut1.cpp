@@ -84,7 +84,7 @@ const std::string strFragmentShader(
 	"out vec4 outputColor;\n"
 	"void main()\n"
 	"{\n"
-	"   outputColor = vec4(1.0f, 1.0f, 1.0f, 1.0f);\n"
+	"   outputColor = vec4(1.0f, 0.0f, 1.0f, 1.0f);\n"
 	"}\n"
 );
 
@@ -102,8 +102,11 @@ void InitializeProgram()
 
 const float vertexPositions[] = {
 	0.75f, 0.75f, 0.0f, 1.0f,
-	0.75f, -0.75f, 0.0f, 1.0f,
-	-0.75f, -0.75f, 0.0f, 1.0f,
+	0.75f, -0.75f, -0.9f, 1.0f,
+	-0.95f, -0.75f, -1.2f, 1.0f,
+	-0.85f, 0.95f, 0.0f, 1.0f,
+	-0.75f, 0.75f, 0.0f, 1.0f,
+	-0.95f, 0.85f, 0.0f, 1.0f,
 };
 
 GLuint positionBufferObject;
@@ -134,7 +137,7 @@ void init()
 //If you need continuous updates of the screen, call glutPostRedisplay() at the end of the function.
 void display()
 {
-	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+	glClearColor(0.0f, 0.0f, 0.5f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	glUseProgram(theProgram);
@@ -143,7 +146,7 @@ void display()
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0);
 
-	glDrawArrays(GL_TRIANGLES, 0, 3);
+	glDrawArrays(GL_TRIANGLES, 0, 6);
 
 	glDisableVertexAttribArray(0);
 	glUseProgram(0);
@@ -155,7 +158,7 @@ void display()
 //This is an opportunity to call glViewport or glScissor to keep up with the change in size.
 void reshape (int w, int h)
 {
-	glViewport(0, 0, (GLsizei) w, (GLsizei) h);
+	glViewport((0.5*w) - 100, (0.5*h) - 100, (GLsizei) 200, (GLsizei) 200);
 }
 
 //Called whenever a key on the keyboard was pressed.
